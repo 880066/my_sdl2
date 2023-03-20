@@ -12,12 +12,6 @@ int main(int argc, char* argv[]) {
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);  // arka planý window isimli pencere için oluþturuyoruz.
 
-    //SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);  //arka planý kýrmýzý ayarladýk. rgb ve alpha deðeri. varsayýlan olan siyahtýr , deðer atansa bile default olan temizlenmeli
-
-    //SDL_RenderClear(renderer);  // default arka planý temizledik
-
-    //SDL_RenderPresent(renderer);  // ayarlanmýþ arka plan verisini çizdirdik
-
     SDL_Delay(3000);  // 3 saniye boyunca ekranda kalsýn
 
     return 0;
