@@ -1,5 +1,8 @@
 #include "Game.h"
 
+SDL_Texture* playerTex;
+SDL_Rect srcR, destR;
+
 Game::Game()
 {
 
@@ -20,14 +23,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)  //fonksiyon basarili sekilde calisirsa 0 degerini dondurur , calismaz ise -1 degerini dondurur
 	{
-		std::cout << "Subsytems Initialised!..." << std::endl;
 		window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
-		if (window)
-		{
-			std::cout << "Window created!" << std::endl;
-		}
-
-		renderer = SDL_CreateRenderer(window, -1, 0);  // yukaridaki if blogu calismayip window adlý pencere oluþmaz ise bu satirin anlami olmayacagindan yukaridaki if blogunun icerisine yazýlabilir diye dusunuyorum.
+		renderer = SDL_CreateRenderer(window, -1, 0);
 		if (renderer)
 		{
 			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -37,10 +34,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = true;
 	}
 	
-	else
-	{
-		isRunning = false;
-	}
+	SDL_Surface* tmpSurface = IMG_Load("assets/player.png");
+	playerTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+	SDL_FreeSurface(tmpSurface);
 
 }
 
@@ -62,13 +58,17 @@ void Game::handleEvents()
 void Game::update()
 {
 	cnt++;
+	destR.h = 32;
+	destR.w = 32;
+	destR.x = cnt;
+
 	std::cout << cnt << std::endl;
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
-	//this is where we would add stuff to render
+	SDL_RenderCopy(renderer, playerTex, NULL, &destR);
 	SDL_RenderPresent(renderer);
 }
 
