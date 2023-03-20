@@ -1,0 +1,21 @@
+#VS files
+.vs/
+Debug/
+x64/
+*.sln
+*.vcxproj
+*.filters
+*.user
+
+#dll
+*.dll
+
+#image
+*.bmp
+*.png
+*.PNG
+*.jpg
+*.JPG
+*.jpeg
+*.JPEG
+
