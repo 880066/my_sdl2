@@ -1,0 +1,10 @@
+srcrect ve dstrect, SDL_RenderCopy() fonksiyonunun kopyalama işleminin kaynak ve hedef koordinatlarını belirlemek için kullandığı dikdörtgen koordinat yapılarıdır.
+
+srcrect, kaynak görüntünün kopyalanacak olan bölgesinin dikdörtgen koordinatlarını belirler. Bu bölge, orijinal görüntünün hangi bölümünün kopyalanacağını gösterir. Eğer srcrect parametresi NULL olarak belirtilirse, tüm kaynak görüntüsü kopyalanır.
+
+dstrect, kopyalanacak olan görüntünün hedef yüzeydeki yerleştirileceği dikdörtgen koordinatları belirler. Bu koordinatlar, kopyalanacak olan görüntünün hedef yüzeydeki nereye yerleştirileceğini gösterir. Bu koordinatlar, hedef yüzeyin sol üst köşesi (0, 0) olarak belirlenir.
+
+Örneğin, aşağıdaki kodda srcrect parametresi NULL olarak belirtilerek tüm kaynak görüntüsü kopyalanırken, dstrect parametresinde 0, 0, 100, 100 değerleri verilerek kopyalanacak görüntü, hedef yüzeyde (0, 0) konumundan başlayarak 100 x 100 boyutlarında bir dikdörtgen içine yerleştirilir.
+
+SDL_Rect dstrect = {0, 0, 100, 100};
+SDL_RenderCopy(renderer, texture, NULL, &dstrect);
