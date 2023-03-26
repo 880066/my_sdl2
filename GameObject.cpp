@@ -1,10 +1,9 @@
 #include "GameObject.h"
 #include "TextureManager.h"
 
-GameObject::GameObject(const char* texturesheet, SDL_Renderer* ren, int x, int y)
+GameObject::GameObject(const char* texturesheet, int x, int y)
 {
-	renderer = ren;
-	objTexture = TextureManager::LoadTexture(texturesheet, ren);
+	objTexture = TextureManager::LoadTexture(texturesheet);
 
 	xpos = x;
 	ypos = y;
@@ -17,8 +16,8 @@ void GameObject::Update()
 	xpos++;
 	ypos++;
 	
-	srcRect.h = 400;
-	srcRect.w = 400;  // kaynak assetden alýnacak dikdörtgensel bölgeyi ifade eder.   BU deðer SDL_RenderCopy e parametre olarak NULL þeklinde atanýrsa görselin orijinal halinin çerçevesi alýnýr.
+	srcRect.h = 100;
+	srcRect.w = 100;  // kaynak assetden alýnacak dikdörtgensel bölgeyi ifade eder.   BU deðer SDL_RenderCopy e parametre olarak NULL þeklinde atanýrsa görselin orijinal halinin çerçevesi alýnýr.
 	srcRect.x = 0;
 	srcRect.y = 0;
 
@@ -30,5 +29,5 @@ void GameObject::Update()
 
 void GameObject::Render()
 {
-	SDL_RenderCopy(renderer, objTexture, NULL, &destRect);
+	SDL_RenderCopy(Game::renderer, objTexture, NULL, &destRect);
 }
